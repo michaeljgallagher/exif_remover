@@ -5,15 +5,17 @@ from PIL import Image
 PATH = os.getcwd()
 
 def remove_data(filename):
-    with Image.open(PATH + filename) as img:
+    print(f'Removing EXIF data from {filename}...')
+    with Image.open(filename) as img:
         out = Image.new(img.mode, img.size)
         out.putdata(img.getdata())
-        out.save(PATH + filename)
+        out.save(filename)
+    print(f'Successfully removed EXIF data from {filename}')
 
 
 def main():
     parser = argparse.ArgumentParser(description='Remove EXIF data from images')
-    parser.add_argument('image', type=argparse.FileType('r'), nargs='+')
+    parser.add_argument('image', nargs='+')
     args = parser.parse_args()
 
     for image in args.image:
