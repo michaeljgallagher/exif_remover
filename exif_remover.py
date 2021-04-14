@@ -1,8 +1,6 @@
 import argparse
-import os
 from PIL import Image
 
-PATH = os.getcwd()
 
 def remove_data(filename):
     print(f'Removing EXIF data from {filename}...')
@@ -14,7 +12,7 @@ def remove_data(filename):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Remove EXIF data from images')
+    parser = argparse.ArgumentParser(description='Remove EXIF data from image')
     parser.add_argument('image', nargs='+')
     args = parser.parse_args()
 
